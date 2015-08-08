@@ -1,0 +1,24 @@
+---
+- name: Add the MariaDB package repo to yum
+  sudo: yes
+  yum:
+    name: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+
+- name: Ensure MariaDB client present using yum
+  sudo: yes
+  yum:
+    name: "{{ mariadb['packages']['client'] }}"
+    state: present
+
+- name: Ensure MariaDB server present using yum
+  sudo: yes
+  yum:
+    name: "{{ mariadb['packages']['server'] }}"
+    state: present
+  notify: start mysql
+  when: mariadb.install_server
+
+- name: Set MariaDB to autostart on boot
+  sudo: yes
+  command: chkconfig --level 2345 mysqld on
+  when: mariadb.install_server
