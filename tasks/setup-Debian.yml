@@ -1,5 +1,17 @@
 ---
-- name: Ensure MySQ client is present using apt
+- name: Add repository key to the system
+  sudo: yes
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: "0xcbcb082a1bb943db"
+
+- name: Install MariaDB repository
+  sudo: yes
+  apt_repository:
+    repo: 'deb http://mirror.edatel.net.co/mariadb/repo/5.5/ubuntu trusty main'
+    state: present
+
+- name: Ensure MariaDB client is present using apt
   sudo: yes
   apt:
     name: "{{ mariadb['packages']['client'] }}"
@@ -17,10 +29,10 @@
   notify: start mysql
   when: mariadb.install_server
 
-- name: Ensure Python MariaDB lib is present using apt
+- name: Ensure Python MySQL lib is present using apt
   sudo: yes
   apt:
-    name: "python-mariadbdb"
+    name: "python-mysqldb"
     state: present
     update_cache: yes
     cache_valid_time: 86400

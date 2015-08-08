@@ -2,7 +2,7 @@
 - name: Update MariaDB Configuration
   sudo: yes
   template:
-    src: "etc/mysql/conf.d/my.cnf.j2"
+    src: "my.cnf.j2"
     dest: "{{ mariadb['conf_dir'] }}/my.cnf"
     mode: 0644
   notify:

@@ -2,13 +2,13 @@
 - name: start mysql
   sudo: yes
   service:
-    name: "{{ mysql['service'] }}"
+    name: "{{ mariadb['service'] }}"
     state: started
     enabled: yes
 
 - name: restart mysql
   sudo: yes
   service:
-    name: "{{ mysql['service'] }}"
+    name: "{{ mariadb['service'] }}"
     state: restarted
     enabled: yes

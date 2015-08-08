@@ -25,7 +25,7 @@ dependencies:
 
 ## Role Variables
 
-See default variables: https://github.com/Aplyca/ansible-role-mysql/blob/master/defaults/main.yml
+See default variables: https://github.com/Aplyca/ansible-role-mariadb/blob/master/defaults/main.yml
 
 ## Dependencies
 
@@ -37,7 +37,6 @@ Use Vagrant to test the role:
 
 ```bash
 cd tests;
-vagrant box add ubuntu/trusty64;
 vagrant up;
 ```
 You should see a MariaDB server on localhost:3306

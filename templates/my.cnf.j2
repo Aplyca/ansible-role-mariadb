@@ -1,21 +1,21 @@
 # {{ ansible_managed }}
 
 [client]
-{%- set x = mysql.cnf.client -%} 
+{%- set x = mariadb.cnf.client -%} 
 {%- for k, v in x.items()  %} 
 {{ k }} = {{ v }}
 {%- endfor %}
 
 # mysql settings
 [mysqld]
-{%- set x = mysql.cnf.mysqld  -%} 
+{%- set x = mariadb.cnf.mysqld  -%} 
 {%- for k, v in x.items()  %} 
 {{ k }} = {{ v }}
 {%- endfor %}
 
 # set parameters for mysqldump
 [mysqldump]
-{%- set x = mysql.cnf.mysqldump  -%} 
+{%- set x = mariadb.cnf.mysqldump  -%} 
 {%- for k, v in x.items()  %} 
 {{ k }} = {{ v }}
 {%- endfor %}
