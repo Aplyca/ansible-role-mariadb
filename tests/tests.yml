@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+  - name: Make sure MariaDB is installed
+    shell: "mysql -V"
+    register: result
+    failed_when: "'MariaDB' not in result.stdout"
