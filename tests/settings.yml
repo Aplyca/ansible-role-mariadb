@@ -1,13 +1,15 @@
 ---
 mariadb:
   install_server: True
-  install_client: True
   cnf:
     client:
       port: 3306
     mysqld:
-      bind-address: 127.0.0.1
+      bind-address: 0.0.0.0
     mysqldump:
       max_allowed_packet: 16M
-  users: []
-  databases: []
+  users: 
+    - name: root
+      host: "%"
+  databases:
+    - name: app

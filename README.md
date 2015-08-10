@@ -36,15 +36,25 @@ None.
 Use Vagrant to test the role:
 
 ```bash
-tests/vagrant.sh;
+tests/vagrant.sh
 ```
 Use Docker to test the role:
 
 ```bash
-tests/docker.sh;
+tests/docker.sh
 ```
 
 You should see a MariaDB server on localhost:3306
+
+## Building
+### Building in a Docker image
+```bash
+build/docker.sh
+```
+### Building in a Vagrant box
+```bash
+build/vagrant.sh
+```
 
 ## License
 

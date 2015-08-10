@@ -14,7 +14,4 @@ test:
   pre:
     - sudo ln -s ansible-role-mariadb ../../aplyca.MariaDB
   override:
-    - ansible-playbook $PLAYBOOK --syntax-check
-    - ansible-playbook $PLAYBOOK --connection=local
-    - "ansible-playbook $PLAYBOOK --connection=local | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)"
-    - mysql -V
+    - tests/test.sh

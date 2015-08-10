@@ -1,0 +1,6 @@
+---
+mariadb:
+  install_client: False
+  cnf:
+    mysqld:
+      bind-address: 0.0.0.0

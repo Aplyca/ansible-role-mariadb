@@ -11,16 +11,20 @@
 # TODO: Use a process manager, see: http://blog.crocodoc.com/post/48703468992/process-managers-the-good-the-bad-and-the-ugly
 
 - name: Create DB users
+  sudo: yes
   mysql_user:
     name: "{{ item.name }}"
-    password: "{{ item.password }}"
-    priv: "{{ item.priv }}"
+    password: "{{ item.password | default('') }}"
+    priv: "{{ item.priv | default('*.*:ALL,GRANT') }}"
+    append_privs: "{{ item.append_privs | default(true) }}"
+    host: "{{ item.host | default('localhost') }}"
     state: "{{ item.state | default('present') }}"
     check_implicit_admin: yes
   with_items: mariadb["users"]
   when: mariadb["users"] is defined
 
 - name: Make sure DBs are present
+  sudo: yes
   mysql_db:
     state: present
     name: "{{ item.name }}"
