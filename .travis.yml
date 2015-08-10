@@ -9,9 +9,7 @@ before_install:
   - ln -s ansible-role-mariadb ../aplyca.MariaDB
 
 install:
-  # Install Ansible.
-  - sudo pip install paramiko PyYAML jinja2 httplib2
-  - sudo pip install ansible
+    - sudo pip install -r tests/requirements.txt
 
 script:
   - tests/test.sh
