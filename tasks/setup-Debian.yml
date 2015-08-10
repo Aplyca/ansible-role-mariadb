@@ -11,15 +11,6 @@
     repo: 'deb http://mirror.edatel.net.co/mariadb/repo/5.5/ubuntu trusty main'
     state: present
 
-- name: Ensure MariaDB client is present using apt
-  sudo: yes
-  apt:
-    name: "{{ mariadb['packages']['client'] }}"
-    state: present
-    update_cache: yes
-    cache_valid_time: 86400
-  when: mariadb.install_client    
-
 - name: Ensure MariaDB server is present using apt
   sudo: yes
   apt:
@@ -29,6 +20,15 @@
     cache_valid_time: 86400
   notify: start mysql
   when: mariadb.install_server
+
+- name: Ensure MariaDB client is present using apt
+  sudo: yes
+  apt:
+    name: "{{ mariadb['packages']['client'] }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 86400
+  when: mariadb.install_client    
 
 - name: Ensure Python MySQL lib is present using apt
   sudo: yes
