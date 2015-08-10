@@ -14,4 +14,4 @@ test:
   pre:
     - sudo ln -s ansible-role-mariadb ../../aplyca.MariaDB
   override:
-    - tests/test.sh
+    - test.sh
