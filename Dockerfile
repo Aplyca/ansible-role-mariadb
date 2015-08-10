@@ -5,10 +5,10 @@ LABEL Description="MariaDB installed and configured using Ansible" Vendor="Aplyc
 
 # Adding Ansible role
 ADD . /tmp/aplyca.MariaDB
-WORKDIR /tmp/aplyca.MariaDB/build
+WORKDIR /tmp/aplyca.MariaDB
 
 # Provision image
-RUN ./provision.sh 
+RUN ./build/provision.sh 
 
 # Create mount points for volumes
 VOLUME ["/etc/mysql", "/var/lib/mysql"]
@@ -17,4 +17,4 @@ VOLUME ["/etc/mysql", "/var/lib/mysql"]
 EXPOSE 3306
 
 # Start MariaDB service
-ENTRYPOINT ["/bin/bash", "./entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "./build/entrypoint.sh"]

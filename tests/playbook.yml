@@ -1,4 +1,13 @@
 ---
 - hosts: all
-  roles:
-    - aplyca.MariaDB
+  tasks:
+  - name: Test if MariaDB is installed
+    shell: "mysql -V"
+    register: result
+    failed_when: "'MariaDB' not in result.stdout"
+    
+  - name: Test if MariaDB is running
+    shell: "sudo service mysql status"
+    register: result
+    failed_when: "'MariaDB' not in result.stdout"
+  
